@@ -20,3 +20,8 @@ group :development do
   gem "web-console", "~> 2.0"
   gem "spring"
 end
+
+gem "unicorn"
+gem "capistrano"
+gem "capistrano-rails"
+gem "capistrano3-unicorn"
