@@ -11,6 +11,10 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets"
 after "deploy:publishing", "deploy:restart"
 
 namespace :deploy do
+  before :restart do
+    invoke "i18n:js:export"
+  end
+
   task :restart do
     invoke "unicorn:stop"
     invoke "unicorn:reload"
