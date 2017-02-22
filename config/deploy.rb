@@ -13,8 +13,11 @@ after "deploy:publishing", "deploy:restart"
 
 namespace :deploy do
   before :restart, :export_i18n_js do
-    within release_path do
-      execute :rake, "i18n:js:export"
+    on roles(:app), wait: 5 do
+      info "Export I18n JS"
+      within release_path do
+        execute :rake, "i18n:js:export"
+      end
     end
   end
 
